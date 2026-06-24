@@ -1,0 +1,1287 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Keidra Daniels Navaroli — Art Historian & Curator</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,400;0,600;0,700;1,400;1,600&family=DM+Sans:wght@300;400;500;700&display=swap" rel="stylesheet" />
+  <style>
+    /* ── Custom Properties ─────────────────────────────────── */
+    :root {
+      --gold:      #D4A017;
+      --gold-lt:   #F2C94C;
+      --gold-dk:   #A07B10;
+      --burgundy:  #6B1A2B;
+      --red:       #C0392B;
+      --forest:    #1A4D35;
+      --earth:     #8B4513;
+      --cream:     #FAF3E0;
+      --black:     #0D0D0D;
+      --charcoal:  #1C1C1C;
+      --mid:       #3A3A3A;
+      --muted:     #6B6B6B;
+      --white:     #FFFFFF;
+
+      --font-serif: 'Cormorant Garamond', Georgia, serif;
+      --font-sans:  'DM Sans', system-ui, sans-serif;
+      --ease-out:   cubic-bezier(0.16, 1, 0.3, 1);
+      --ease-in:    cubic-bezier(0.7, 0, 0.84, 0);
+    }
+
+    /* ── Reset ─────────────────────────────────────────────── */
+    *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+    html { scroll-behavior: smooth; }
+    body {
+      background: var(--black);
+      color: var(--cream);
+      font-family: var(--font-sans);
+      font-size: 16px;
+      line-height: 1.65;
+      overflow-x: hidden;
+    }
+    a { color: var(--gold); text-decoration: none; transition: color .2s; }
+    a:hover { color: var(--gold-lt); }
+    ul { list-style: none; }
+
+    /* ── Kente strip utility ───────────────────────────────── */
+    .kente-strip {
+      height: 8px;
+      background: repeating-linear-gradient(
+        90deg,
+        var(--gold)     0px,
+        var(--gold)     18px,
+        var(--red)      18px,
+        var(--red)      30px,
+        var(--forest)   30px,
+        var(--forest)   42px,
+        var(--gold-lt)  42px,
+        var(--gold-lt)  54px,
+        var(--burgundy) 54px,
+        var(--burgundy) 66px,
+        var(--earth)    66px,
+        var(--earth)    78px,
+        var(--gold)     78px
+      );
+    }
+    .kente-strip.tall { height: 14px; }
+
+    /* ── Geometric corner ornament ─────────────────────────── */
+    .ornament {
+      display: inline-block;
+      width: 32px; height: 32px;
+      border: 3px solid var(--gold);
+      transform: rotate(45deg);
+      margin: 0 12px;
+      position: relative;
+      flex-shrink: 0;
+    }
+    .ornament::after {
+      content: '';
+      position: absolute;
+      inset: 4px;
+      background: var(--gold);
+      opacity: .35;
+    }
+
+    /* ── Nav ───────────────────────────────────────────────── */
+    nav {
+      position: fixed;
+      top: 0; left: 0; right: 0;
+      z-index: 100;
+      background: rgba(13, 13, 13, 0.92);
+      backdrop-filter: blur(12px);
+      border-bottom: 1px solid rgba(212,160,23,.25);
+    }
+    .nav-inner {
+      max-width: 1200px;
+      margin: 0 auto;
+      padding: 0 2rem;
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      height: 64px;
+    }
+    .nav-logo {
+      font-family: var(--font-serif);
+      font-size: 1.1rem;
+      font-weight: 700;
+      letter-spacing: .04em;
+      color: var(--gold);
+    }
+    .nav-links {
+      display: flex;
+      gap: 2rem;
+    }
+    .nav-links a {
+      font-size: .82rem;
+      font-weight: 500;
+      letter-spacing: .08em;
+      text-transform: uppercase;
+      color: var(--cream);
+      opacity: .75;
+      transition: opacity .2s, color .2s;
+    }
+    .nav-links a:hover { opacity: 1; color: var(--gold); }
+
+    /* ── Hero ──────────────────────────────────────────────── */
+    #hero {
+      min-height: 100vh;
+      display: flex;
+      flex-direction: column;
+      justify-content: center;
+      align-items: center;
+      text-align: center;
+      padding: 6rem 2rem 4rem;
+      position: relative;
+      overflow: hidden;
+    }
+    .hero-bg {
+      position: absolute;
+      inset: 0;
+      background:
+        radial-gradient(ellipse 80% 60% at 50% 40%, rgba(107,26,43,.45) 0%, transparent 65%),
+        radial-gradient(ellipse 60% 80% at 20% 80%, rgba(26,77,53,.3) 0%, transparent 60%),
+        radial-gradient(ellipse 70% 50% at 80% 10%, rgba(212,160,23,.15) 0%, transparent 55%);
+      z-index: 0;
+    }
+    .hero-pattern {
+      position: absolute;
+      inset: 0;
+      background-image:
+        repeating-linear-gradient(0deg,   transparent, transparent 39px, rgba(212,160,23,.05) 40px),
+        repeating-linear-gradient(90deg,  transparent, transparent 39px, rgba(212,160,23,.05) 40px);
+      z-index: 0;
+    }
+    #hero > * { position: relative; z-index: 1; }
+    .hero-kente { width: 100%; margin-bottom: 3rem; }
+    .hero-eyebrow {
+      font-family: var(--font-sans);
+      font-size: .75rem;
+      font-weight: 700;
+      letter-spacing: .2em;
+      text-transform: uppercase;
+      color: var(--gold);
+      margin-bottom: 1rem;
+      opacity: 0;
+      animation: fadeUp .8s var(--ease-out) .3s forwards;
+    }
+    .hero-name {
+      font-family: var(--font-serif);
+      font-size: clamp(3rem, 8vw, 7rem);
+      font-weight: 700;
+      line-height: 1.05;
+      letter-spacing: -.01em;
+      margin-bottom: .75rem;
+      opacity: 0;
+      animation: fadeUp .9s var(--ease-out) .5s forwards;
+    }
+    .hero-name span { color: var(--gold); }
+    .hero-title {
+      font-family: var(--font-serif);
+      font-style: italic;
+      font-size: clamp(1.1rem, 2.5vw, 1.6rem);
+      color: var(--gold-lt);
+      margin-bottom: 2rem;
+      opacity: 0;
+      animation: fadeUp .9s var(--ease-out) .7s forwards;
+    }
+    .hero-contact {
+      display: flex;
+      gap: 1.5rem;
+      flex-wrap: wrap;
+      justify-content: center;
+      font-size: .85rem;
+      margin-bottom: 3rem;
+      opacity: 0;
+      animation: fadeUp .9s var(--ease-out) .9s forwards;
+    }
+    .hero-contact a {
+      color: var(--cream);
+      opacity: .8;
+    }
+    .hero-contact a:hover { color: var(--gold-lt); opacity: 1; }
+    .hero-divider {
+      display: flex;
+      align-items: center;
+      gap: 0;
+      width: min(600px, 90vw);
+      margin: 0 auto 2rem;
+      opacity: 0;
+      animation: fadeIn .9s var(--ease-out) 1.1s forwards;
+    }
+    .hero-divider-line { flex: 1; height: 2px; background: linear-gradient(90deg, transparent, var(--gold)); }
+    .hero-divider-line.right { background: linear-gradient(90deg, var(--gold), transparent); }
+    .hero-stats {
+      display: flex;
+      gap: 3rem;
+      flex-wrap: wrap;
+      justify-content: center;
+      opacity: 0;
+      animation: fadeUp .9s var(--ease-out) 1.2s forwards;
+    }
+    .stat { text-align: center; }
+    .stat-number {
+      display: block;
+      font-family: var(--font-serif);
+      font-size: 2.4rem;
+      font-weight: 700;
+      color: var(--gold);
+      line-height: 1;
+    }
+    .stat-label {
+      font-size: .72rem;
+      letter-spacing: .12em;
+      text-transform: uppercase;
+      color: var(--cream);
+      opacity: .65;
+      margin-top: .25rem;
+    }
+    .scroll-hint {
+      margin-top: 4rem;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      gap: .5rem;
+      opacity: 0;
+      animation: fadeIn 1s var(--ease-out) 1.8s forwards;
+    }
+    .scroll-hint span { font-size: .7rem; letter-spacing: .15em; text-transform: uppercase; opacity: .4; }
+    .scroll-arrow {
+      width: 24px; height: 24px;
+      border-right: 2px solid var(--gold);
+      border-bottom: 2px solid var(--gold);
+      transform: rotate(45deg);
+      animation: bounce 2s infinite;
+      opacity: .6;
+    }
+
+    /* ── Section shells ────────────────────────────────────── */
+    section { padding: 6rem 2rem; }
+    .section-inner {
+      max-width: 1100px;
+      margin: 0 auto;
+    }
+    .section-header {
+      display: flex;
+      align-items: center;
+      gap: 1.5rem;
+      margin-bottom: 3.5rem;
+    }
+    .section-number {
+      font-family: var(--font-serif);
+      font-size: .85rem;
+      font-weight: 600;
+      letter-spacing: .15em;
+      color: var(--gold);
+      opacity: .7;
+      white-space: nowrap;
+    }
+    .section-title {
+      font-family: var(--font-serif);
+      font-size: clamp(1.8rem, 4vw, 2.8rem);
+      font-weight: 700;
+      line-height: 1.1;
+    }
+    .section-line {
+      flex: 1;
+      height: 1px;
+      background: linear-gradient(90deg, var(--gold) 0%, transparent 100%);
+      opacity: .4;
+    }
+
+    /* alt section bg */
+    .alt-bg { background: var(--charcoal); }
+
+    /* ── Scroll-reveal ─────────────────────────────────────── */
+    .reveal {
+      opacity: 0;
+      transform: translateY(32px);
+      transition: opacity .75s var(--ease-out), transform .75s var(--ease-out);
+    }
+    .reveal.visible { opacity: 1; transform: none; }
+    .reveal-delay-1 { transition-delay: .1s; }
+    .reveal-delay-2 { transition-delay: .2s; }
+    .reveal-delay-3 { transition-delay: .3s; }
+    .reveal-delay-4 { transition-delay: .4s; }
+
+    /* ── Education ─────────────────────────────────────────── */
+    .edu-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fill, minmax(300px, 1fr));
+      gap: 1.5rem;
+    }
+    .edu-card {
+      background: linear-gradient(135deg, rgba(107,26,43,.25), rgba(26,77,53,.15));
+      border: 1px solid rgba(212,160,23,.2);
+      border-radius: 2px;
+      padding: 1.75rem;
+      position: relative;
+      overflow: hidden;
+      transition: border-color .3s, transform .3s var(--ease-out), box-shadow .3s;
+    }
+    .edu-card:hover {
+      border-color: var(--gold);
+      transform: translateY(-4px);
+      box-shadow: 0 16px 40px rgba(212,160,23,.12);
+    }
+    .edu-card::before {
+      content: '';
+      position: absolute;
+      top: 0; left: 0; right: 0;
+      height: 3px;
+      background: linear-gradient(90deg, var(--gold), var(--burgundy));
+    }
+    .edu-year {
+      font-size: .75rem;
+      font-weight: 700;
+      letter-spacing: .15em;
+      text-transform: uppercase;
+      color: var(--gold);
+      margin-bottom: .5rem;
+    }
+    .edu-degree {
+      font-family: var(--font-serif);
+      font-size: 1.15rem;
+      font-weight: 600;
+      margin-bottom: .3rem;
+    }
+    .edu-school { font-size: .9rem; color: var(--cream); opacity: .75; margin-bottom: .6rem; }
+    .edu-note { font-size: .82rem; font-style: italic; color: var(--gold-lt); opacity: .85; }
+
+    /* ── Timeline ──────────────────────────────────────────── */
+    .timeline { position: relative; padding-left: 2rem; }
+    .timeline::before {
+      content: '';
+      position: absolute;
+      left: 0; top: 0; bottom: 0;
+      width: 2px;
+      background: linear-gradient(180deg, var(--gold), var(--burgundy), transparent);
+      opacity: .4;
+    }
+    .tl-item {
+      position: relative;
+      padding: 0 0 2rem 2rem;
+    }
+    .tl-item::before {
+      content: '';
+      position: absolute;
+      left: -5px;
+      top: 6px;
+      width: 12px; height: 12px;
+      background: var(--gold);
+      border-radius: 50%;
+      border: 2px solid var(--black);
+      transition: transform .3s;
+    }
+    .tl-item:hover::before { transform: scale(1.4); }
+    .tl-year {
+      font-size: .75rem;
+      font-weight: 700;
+      letter-spacing: .12em;
+      text-transform: uppercase;
+      color: var(--gold);
+      margin-bottom: .2rem;
+    }
+    .tl-title {
+      font-family: var(--font-serif);
+      font-size: 1.1rem;
+      font-weight: 600;
+      margin-bottom: .25rem;
+    }
+    .tl-org { font-size: .88rem; color: var(--cream); opacity: .7; margin-bottom: .3rem; }
+    .tl-desc { font-size: .85rem; color: var(--cream); opacity: .65; }
+
+    /* ── Publications ──────────────────────────────────────── */
+    .pub-list { display: flex; flex-direction: column; gap: 1.2rem; }
+    .pub-item {
+      padding: 1.25rem 1.5rem;
+      background: rgba(255,255,255,.03);
+      border-left: 3px solid var(--gold);
+      transition: background .3s, border-color .3s, transform .3s var(--ease-out);
+    }
+    .pub-item:hover {
+      background: rgba(212,160,23,.07);
+      border-color: var(--gold-lt);
+      transform: translateX(6px);
+    }
+    .pub-year {
+      font-size: .72rem;
+      font-weight: 700;
+      letter-spacing: .15em;
+      text-transform: uppercase;
+      color: var(--gold);
+      margin-bottom: .25rem;
+    }
+    .pub-citation { font-size: .9rem; line-height: 1.6; color: var(--cream); opacity: .85; }
+    .pub-citation em { color: var(--gold-lt); font-style: italic; }
+
+    /* ── Exhibitions ───────────────────────────────────────── */
+    .exhibit-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fill, minmax(260px, 1fr));
+      gap: 1.25rem;
+    }
+    .exhibit-card {
+      background: rgba(255,255,255,.03);
+      border: 1px solid rgba(212,160,23,.15);
+      border-radius: 2px;
+      padding: 1.5rem;
+      transition: background .3s, border-color .3s, transform .3s var(--ease-out);
+      cursor: default;
+    }
+    .exhibit-card:hover {
+      background: rgba(107,26,43,.2);
+      border-color: var(--gold);
+      transform: translateY(-4px);
+    }
+    .exhibit-year { font-size: .7rem; font-weight: 700; letter-spacing: .15em; text-transform: uppercase; color: var(--gold); margin-bottom: .4rem; }
+    .exhibit-title { font-family: var(--font-serif); font-size: 1rem; font-weight: 600; margin-bottom: .4rem; line-height: 1.3; }
+    .exhibit-venue { font-size: .82rem; color: var(--cream); opacity: .65; }
+
+    /* ── Awards ────────────────────────────────────────────── */
+    .awards-masonry {
+      columns: 2;
+      column-gap: 1.5rem;
+    }
+    @media (max-width: 640px) { .awards-masonry { columns: 1; } }
+    .award-item {
+      break-inside: avoid;
+      margin-bottom: 1.2rem;
+      padding: 1.2rem 1.4rem;
+      background: linear-gradient(135deg, rgba(212,160,23,.08), rgba(107,26,43,.08));
+      border: 1px solid rgba(212,160,23,.18);
+      transition: border-color .3s, transform .3s var(--ease-out);
+    }
+    .award-item:hover { border-color: var(--gold); transform: scale(1.015); }
+    .award-year { font-size: .7rem; font-weight: 700; letter-spacing: .15em; text-transform: uppercase; color: var(--gold); margin-bottom: .25rem; }
+    .award-name { font-family: var(--font-serif); font-size: 1rem; font-weight: 600; line-height: 1.4; }
+    .award-org { font-size: .82rem; color: var(--cream); opacity: .6; margin-top: .2rem; }
+
+    /* ── Conferences ───────────────────────────────────────── */
+    .conf-tabs { display: flex; gap: .75rem; margin-bottom: 2rem; flex-wrap: wrap; }
+    .conf-tab {
+      padding: .5rem 1.2rem;
+      border: 1px solid rgba(212,160,23,.3);
+      background: transparent;
+      color: var(--cream);
+      font-family: var(--font-sans);
+      font-size: .78rem;
+      font-weight: 600;
+      letter-spacing: .08em;
+      text-transform: uppercase;
+      cursor: pointer;
+      transition: background .25s, border-color .25s, color .25s;
+    }
+    .conf-tab:hover, .conf-tab.active {
+      background: var(--gold);
+      border-color: var(--gold);
+      color: var(--black);
+    }
+    .conf-panel { display: none; }
+    .conf-panel.active { display: block; }
+
+    /* ── Teaching ──────────────────────────────────────────── */
+    .teach-cards {
+      display: grid;
+      grid-template-columns: repeat(auto-fill, minmax(280px, 1fr));
+      gap: 1.25rem;
+    }
+    .teach-card {
+      padding: 1.75rem;
+      background: rgba(26,77,53,.18);
+      border: 1px solid rgba(26,77,53,.4);
+      border-radius: 2px;
+      transition: border-color .3s, transform .3s var(--ease-out);
+    }
+    .teach-card:hover { border-color: var(--forest); transform: translateY(-4px); }
+    .teach-org { font-size: .72rem; font-weight: 700; letter-spacing: .12em; text-transform: uppercase; color: #4EC986; margin-bottom: .4rem; }
+    .teach-years { font-size: .82rem; color: var(--cream); opacity: .6; margin-bottom: .4rem; }
+    .teach-role { font-family: var(--font-serif); font-size: 1.05rem; font-weight: 600; margin-bottom: .4rem; }
+    .teach-topics { font-size: .82rem; color: var(--cream); opacity: .7; }
+
+    /* ── Professional accomplishments ─────────────────────── */
+    .accom-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fill, minmax(300px, 1fr));
+      gap: 1.5rem;
+    }
+    .accom-card {
+      padding: 2rem;
+      background: rgba(255,255,255,.03);
+      border-top: 3px solid var(--burgundy);
+      transition: border-color .3s, transform .3s var(--ease-out);
+    }
+    .accom-card:hover { border-color: var(--gold); transform: translateY(-4px); }
+    .accom-role { font-family: var(--font-serif); font-size: 1.15rem; font-weight: 700; margin-bottom: 1rem; color: var(--gold-lt); }
+    .accom-bullets { display: flex; flex-direction: column; gap: .75rem; }
+    .accom-bullet { display: flex; gap: .75rem; font-size: .85rem; line-height: 1.6; opacity: .8; }
+    .accom-bullet::before {
+      content: '◆';
+      color: var(--gold);
+      font-size: .6rem;
+      margin-top: .35rem;
+      flex-shrink: 0;
+    }
+
+    /* ── Contact footer ────────────────────────────────────── */
+    #contact {
+      background: var(--charcoal);
+      text-align: center;
+      padding: 5rem 2rem;
+    }
+    .contact-name {
+      font-family: var(--font-serif);
+      font-size: clamp(2rem, 5vw, 3.5rem);
+      font-weight: 700;
+      margin-bottom: .75rem;
+    }
+    .contact-tagline {
+      font-family: var(--font-serif);
+      font-style: italic;
+      font-size: 1.15rem;
+      color: var(--gold-lt);
+      margin-bottom: 2.5rem;
+      opacity: .85;
+    }
+    .contact-links {
+      display: flex;
+      gap: 2rem;
+      justify-content: center;
+      flex-wrap: wrap;
+      margin-bottom: 3rem;
+    }
+    .contact-links a {
+      display: flex;
+      align-items: center;
+      gap: .5rem;
+      font-size: .85rem;
+      font-weight: 500;
+      color: var(--cream);
+      opacity: .75;
+      transition: opacity .2s, color .2s;
+    }
+    .contact-links a:hover { opacity: 1; color: var(--gold-lt); }
+    .contact-copy {
+      font-size: .75rem;
+      opacity: .35;
+      letter-spacing: .08em;
+    }
+
+    /* ── Animations ────────────────────────────────────────── */
+    @keyframes fadeUp {
+      from { opacity: 0; transform: translateY(20px); }
+      to   { opacity: 1; transform: none; }
+    }
+    @keyframes fadeIn {
+      from { opacity: 0; }
+      to   { opacity: 1; }
+    }
+    @keyframes bounce {
+      0%, 100% { transform: rotate(45deg) translateY(0); }
+      50%       { transform: rotate(45deg) translateY(6px); }
+    }
+    @keyframes spin-slow {
+      to { transform: rotate(360deg); }
+    }
+
+    /* ── Progress bar ──────────────────────────────────────── */
+    #progress-bar {
+      position: fixed;
+      top: 64px; left: 0;
+      height: 3px;
+      width: 0%;
+      background: linear-gradient(90deg, var(--burgundy), var(--gold), var(--gold-lt));
+      z-index: 200;
+      transition: width .1s linear;
+    }
+
+    /* ── Mobile ────────────────────────────────────────────── */
+    @media (max-width: 768px) {
+      .nav-links { display: none; }
+      section { padding: 4rem 1.25rem; }
+      .hero-stats { gap: 1.5rem; }
+    }
+
+    /* ── Decorative diamond row ────────────────────────────── */
+    .diamond-row {
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      gap: .75rem;
+      margin: 2.5rem 0;
+    }
+    .diamond {
+      width: 10px; height: 10px;
+      background: var(--gold);
+      transform: rotate(45deg);
+      opacity: .6;
+    }
+    .diamond.lg { width: 16px; height: 16px; opacity: 1; background: var(--gold); }
+    .diamond-line { flex: 1; height: 1px; background: rgba(212,160,23,.25); max-width: 120px; }
+
+    /* ── Adinkra-inspired floating symbols ─────────────────── */
+    .adinkra-bg {
+      position: absolute;
+      pointer-events: none;
+      font-size: 5rem;
+      opacity: .03;
+      animation: spin-slow 40s linear infinite;
+      z-index: 0;
+    }
+  </style>
+</head>
+<body>
+
+<!-- Progress bar -->
+<div id="progress-bar"></div>
+
+<!-- Nav -->
+<nav>
+  <div class="nav-inner">
+    <span class="nav-logo">KDN</span>
+    <div class="nav-links">
+      <a href="#education">Education</a>
+      <a href="#research">Research</a>
+      <a href="#teaching">Teaching</a>
+      <a href="#publications">Publications</a>
+      <a href="#exhibitions">Exhibitions</a>
+      <a href="#honors">Honors</a>
+      <a href="#conferences">Conferences</a>
+      <a href="#contact">Contact</a>
+    </div>
+  </div>
+</nav>
+
+<!-- ── HERO ─────────────────────────────────────────────────── -->
+<section id="hero">
+  <div class="hero-bg"></div>
+  <div class="hero-pattern"></div>
+  <div class="adinkra-bg" style="top:10%;left:5%;">✦</div>
+  <div class="adinkra-bg" style="top:60%;right:6%;animation-duration:55s;font-size:4rem;">◈</div>
+  <div class="adinkra-bg" style="bottom:15%;left:15%;animation-duration:70s;font-size:3rem;">⬡</div>
+
+  <div class="kente-strip tall hero-kente"></div>
+
+  <p class="hero-eyebrow">Art Historian · Curator · Scholar · Educator</p>
+  <h1 class="hero-name">Keidra <span>Daniels</span><br>Navaroli</h1>
+  <p class="hero-title">PhD Candidate, Texts &amp; Technology · University of Central Florida</p>
+
+  <div class="hero-contact">
+    <a href="mailto:dkeidra@gmail.com">dkeidra@gmail.com</a>
+    <span style="opacity:.3">|</span>
+    <a href="mailto:keidra.navaroli@ucf.edu">keidra.navaroli@ucf.edu</a>
+    <span style="opacity:.3">|</span>
+    <a href="https://kdnavaroli.com" target="_blank" rel="noopener">kdnavaroli.com</a>
+  </div>
+
+  <div class="hero-divider">
+    <div class="hero-divider-line"></div>
+    <div class="ornament"></div>
+    <div class="hero-divider-line right"></div>
+  </div>
+
+  <div class="hero-stats">
+    <div class="stat"><span class="stat-number">20+</span><span class="stat-label">Years Experience</span></div>
+    <div class="stat"><span class="stat-number">25+</span><span class="stat-label">Exhibitions Curated</span></div>
+    <div class="stat"><span class="stat-number">15+</span><span class="stat-label">Publications</span></div>
+    <div class="stat"><span class="stat-number">40+</span><span class="stat-label">Presentations</span></div>
+  </div>
+
+  <div class="scroll-hint">
+    <span>Explore</span>
+    <div class="scroll-arrow"></div>
+  </div>
+
+  <div class="kente-strip tall" style="position:absolute;bottom:0;left:0;right:0;"></div>
+</section>
+
+<!-- ── EDUCATION ─────────────────────────────────────────────── -->
+<section id="education">
+  <div class="section-inner">
+    <div class="section-header reveal">
+      <span class="section-number">01</span>
+      <h2 class="section-title">Education</h2>
+      <div class="section-line"></div>
+    </div>
+
+    <div class="edu-grid">
+      <div class="edu-card reveal reveal-delay-1">
+        <div class="edu-year">2021 – Present (Anticipated Aug. 2026)</div>
+        <div class="edu-degree">Doctor of Philosophy</div>
+        <div class="edu-school">Texts and Technology PhD Program<br>University of Central Florida, Orlando, FL</div>
+        <div class="edu-note">Area of Specialization: Public History<br>McKnight Doctoral Fellow</div>
+      </div>
+      <div class="edu-card reveal reveal-delay-2">
+        <div class="edu-year">2007</div>
+        <div class="edu-degree">Master of Arts</div>
+        <div class="edu-school">History and Criticism of Art<br>Florida State University, Tallahassee, FL</div>
+        <div class="edu-note">Area of Specialization: Modern and Contemporary Art</div>
+      </div>
+      <div class="edu-card reveal reveal-delay-3">
+        <div class="edu-year">2005</div>
+        <div class="edu-degree">Bachelor of Arts <em style="font-size:.8em;color:var(--gold-lt)">(summa cum laude)</em></div>
+        <div class="edu-school">History of Art<br>University of Florida, Gainesville, FL</div>
+        <div class="edu-note">Minor: Classical Studies</div>
+      </div>
+    </div>
+
+    <div class="diamond-row reveal"><div class="diamond-line"></div><div class="diamond"></div><div class="diamond lg"></div><div class="diamond"></div><div class="diamond-line"></div></div>
+
+    <div style="max-width:720px;margin:0 auto;" class="reveal">
+      <p style="font-family:var(--font-serif);font-style:italic;font-size:1.05rem;line-height:1.7;opacity:.8;text-align:center;">
+        Dissertation: <strong style="color:var(--gold-lt);font-style:normal">"Fraught Liability, Visible Asset, or Hidden Gem? A Case Study on the History and Governance of the Museum of Contemporary Art Jacksonville"</strong><br>
+        <span style="font-size:.9rem;opacity:.7">Supervised by Dr. Keri Watson, Dr. Scot French, Dr. Amy Giroux, and Dr. Mora Beauchamp-Byrd.</span>
+      </p>
+    </div>
+  </div>
+</section>
+
+<!-- ── RESEARCH ───────────────────────────────────────────────── -->
+<section id="research" class="alt-bg">
+  <div class="section-inner">
+    <div class="section-header reveal">
+      <span class="section-number">02</span>
+      <h2 class="section-title">Research &amp; Curatorial Work</h2>
+      <div class="section-line"></div>
+    </div>
+
+    <div class="timeline">
+      <div class="tl-item reveal reveal-delay-1">
+        <div class="tl-year">2024 – Present</div>
+        <div class="tl-title">Manager, Diversity, Equity, and Inclusion / Digital Art History</div>
+        <div class="tl-org">Editorial Board · <em>Panorama: Journal of the Association of Historians of American Art</em></div>
+      </div>
+      <div class="tl-item reveal reveal-delay-2">
+        <div class="tl-year">2021 – Present</div>
+        <div class="tl-title">McKnight Doctoral Fellow</div>
+        <div class="tl-org">Texts and Technology Doctoral Program · University of Central Florida, Orlando, FL</div>
+      </div>
+      <div class="tl-item reveal reveal-delay-3">
+        <div class="tl-year">2024 – 2025</div>
+        <div class="tl-title">Contract Researcher</div>
+        <div class="tl-org">University Art Galleries · Lehigh University, Bethlehem, PA</div>
+      </div>
+      <div class="tl-item reveal">
+        <div class="tl-year">2023</div>
+        <div class="tl-title">Guest Co-Curator</div>
+        <div class="tl-org"><em>Intertwined: Labor and Technology in Contemporary Textile Art</em></div>
+        <div class="tl-desc">Museum of Fine Arts, Florida State University, Tallahassee, FL</div>
+      </div>
+      <div class="tl-item reveal">
+        <div class="tl-year">2022 – 2023</div>
+        <div class="tl-title">Guest Curator</div>
+        <div class="tl-org"><em>Chakaia Booker: Surface Pressure</em></div>
+        <div class="tl-desc">Sarasota Art Museum, Ringling College of Art and Design, Sarasota, FL</div>
+      </div>
+      <div class="tl-item reveal">
+        <div class="tl-year">2021</div>
+        <div class="tl-title">Graduate Summer Mentoring Fellow</div>
+        <div class="tl-org">Under Dr. Keri Watson · University of Central Florida, Orlando, FL</div>
+      </div>
+      <div class="tl-item reveal">
+        <div class="tl-year">2014 – 2020</div>
+        <div class="tl-title">Assistant Director and Curator</div>
+        <div class="tl-org">Ruth Funk Center for Textile Arts · Florida Institute of Technology, Melbourne, FL</div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ── TEACHING ───────────────────────────────────────────────── -->
+<section id="teaching">
+  <div class="section-inner">
+    <div class="section-header reveal">
+      <span class="section-number">03</span>
+      <h2 class="section-title">Teaching &amp; Curriculum</h2>
+      <div class="section-line"></div>
+    </div>
+
+    <div class="teach-cards">
+      <div class="teach-card reveal reveal-delay-1">
+        <div class="teach-org">University of Central Florida</div>
+        <div class="teach-years">2023 – Present</div>
+        <div class="teach-role">Adjunct Faculty, School of Visual Arts and Design</div>
+        <div class="teach-topics">American Art · African American Art · 20th Century Art · 19th Century Art — art historical methodologies, African American representation, museum practice, digital art history</div>
+      </div>
+      <div class="teach-card reveal reveal-delay-2">
+        <div class="teach-org">Oxford University Press</div>
+        <div class="teach-years">2021 – 2023</div>
+        <div class="teach-role">Co-developer, Application &amp; Lesson Planning</div>
+        <div class="teach-topics"><em>This is America: Reviewing the Art of United States</em> — visual literacy, comparative art analysis, social history</div>
+      </div>
+      <div class="teach-card reveal reveal-delay-3">
+        <div class="teach-org">Parsons School of Design, The New School</div>
+        <div class="teach-years">2022, Fall</div>
+        <div class="teach-role">Guest Lecturer — History of Textiles (PGTX 5085)</div>
+        <div class="teach-topics">Textile history (pre-1950), contemporary textiles, curatorial practice</div>
+      </div>
+      <div class="teach-card reveal">
+        <div class="teach-org">University of Central Florida</div>
+        <div class="teach-years">2022</div>
+        <div class="teach-role">Graduate Teaching Assistant — Digital Humanities (DIG 3171)<br>Guest Lecturer — American Art (ARH 3610)</div>
+        <div class="teach-topics">Online publishing, digital curation, inclusive practice in technology; 19th-century American art, art activism</div>
+      </div>
+      <div class="teach-card reveal">
+        <div class="teach-org">Florida Institute of Technology</div>
+        <div class="teach-years">2014 – 2020</div>
+        <div class="teach-role">Lead Instructor, Ruth Funk Center Exhibition Program</div>
+        <div class="teach-topics">Global textile history, contemporary textiles, basketry, fashion, exhibition development, curatorial practice</div>
+      </div>
+      <div class="teach-card reveal">
+        <div class="teach-org">Florida State University</div>
+        <div class="teach-years">2005 – 2007</div>
+        <div class="teach-role">Graduate Research Assistant — Art Appraisal Certificate Program</div>
+        <div class="teach-topics">Under Dr. Paula Gerson, Chair of the Department of Art History</div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ── PUBLICATIONS ───────────────────────────────────────────── -->
+<section id="publications" class="alt-bg">
+  <div class="section-inner">
+    <div class="section-header reveal">
+      <span class="section-number">04</span>
+      <h2 class="section-title">Publications &amp; Press</h2>
+      <div class="section-line"></div>
+    </div>
+
+    <div class="pub-list">
+      <div class="pub-item reveal">
+        <div class="pub-year">2026</div>
+        <div class="pub-citation">Navaroli, Keidra Daniels. "From Founders to Futures: Forging a Culture of Art at Lehigh." In <em>Creativity &amp; Connection: Lehigh University Art Galleries at 100</em>, edited by Mark Wonsidler. Munich: Hirmer Publishers.</div>
+      </div>
+      <div class="pub-item reveal">
+        <div class="pub-year">2025</div>
+        <div class="pub-citation">Navaroli, Keidra Daniels. "Review of <em>Is Now the Time for Joyous Rage?</em>" <em>caa.reviews</em>, College Art Association, May 2025.</div>
+      </div>
+      <div class="pub-item reveal">
+        <div class="pub-year">2025</div>
+        <div class="pub-citation">Navaroli, Keidra Daniels. "Out of the Closet: A Bogeyman for the Internet Age," <em>Contemporary Legend</em> 4, no. 3 (2025): 56–77.</div>
+      </div>
+      <div class="pub-item reveal">
+        <div class="pub-year">2024</div>
+        <div class="pub-citation">Navaroli, Keidra Daniels. "A Look Back: Thirty Years of AmArt-L," <em>Panorama: Journal of the Association of Historians of American Art</em> 10, no. 2 (Fall 2024).</div>
+      </div>
+      <div class="pub-item reveal">
+        <div class="pub-year">2024</div>
+        <div class="pub-citation">Navaroli, Keidra Daniels. "Control+Shift: The Digital Carpets of Shaheer Zazai," <em>Selvedge Magazine</em> 120 (September 2024): 20–23.</div>
+      </div>
+      <div class="pub-item reveal">
+        <div class="pub-year">2023</div>
+        <div class="pub-citation">Scott, Chadd. "Chakaia Booker's Vision On View At Sarasota Art Museum," <em>Forbes</em>, July 27, 2023. [Press coverage of curated exhibition]</div>
+      </div>
+      <div class="pub-item reveal">
+        <div class="pub-year">2023</div>
+        <div class="pub-citation">Watson, Keri and Keidra Daniels Navaroli. <em>This is America: Re-viewing the Art of the United States.</em> New York: Oxford University Press. <span style="color:var(--gold-lt)">[Winner: Most Promising New Textbook Award, TAA 2024]</span></div>
+      </div>
+      <div class="pub-item reveal">
+        <div class="pub-year">2023</div>
+        <div class="pub-citation">Navaroli, Keidra Daniels. Review of "In Conversation: Will Wilson," <em>Panorama: Journal of the Association of Historians of American Art</em> 9, no. 1 (Spring 2023).</div>
+      </div>
+      <div class="pub-item reveal">
+        <div class="pub-year">2022</div>
+        <div class="pub-citation">Navaroli, Keidra Daniels. "Fiber Art &amp; Museum Practice," <em>Art Quilt Quarterly</em> 29 (October 2022): 1–4.</div>
+      </div>
+      <div class="pub-item reveal">
+        <div class="pub-year">2021</div>
+        <div class="pub-citation">Navaroli, Keidra Daniels and Elizabeth Kozlowski, eds. <em>Surface Design Journal: International Exhibition in Print</em> 45, no. 3 (Fall 2021).</div>
+      </div>
+      <div class="pub-item reveal">
+        <div class="pub-year">2019</div>
+        <div class="pub-citation">Navaroli, Keidra Daniels. <em>Designed to Mobilize: Propaganda Kimono 1920–1945.</em> Digital Exhibition Catalog. Melbourne, FL: Ruth Funk Center for Textile Arts. <span style="color:var(--gold-lt)">[2019 Silver Award, SEMC Excellence in Exhibitions]</span></div>
+      </div>
+      <div class="pub-item reveal">
+        <div class="pub-year">2019</div>
+        <div class="pub-citation">Navaroli, Keidra Daniels. "Flora and Fiber in the Collection of the Ruth Funk Center for Textile Arts," <em>Surface Design Journal</em> 43, no. 4 (2019): 46–50.</div>
+      </div>
+      <div class="pub-item reveal">
+        <div class="pub-year">2017–2020</div>
+        <div class="pub-citation">Wright, Terri and Keidra Daniels Navaroli. "Inside Florida Tech" Podcast, WFIT 89.5, National Public Radio.</div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ── EXHIBITIONS ────────────────────────────────────────────── -->
+<section id="exhibitions">
+  <div class="section-inner">
+    <div class="section-header reveal">
+      <span class="section-number">05</span>
+      <h2 class="section-title">Exhibitions &amp; Special Projects</h2>
+      <div class="section-line"></div>
+    </div>
+
+    <div class="exhibit-grid">
+      <div class="exhibit-card reveal reveal-delay-1">
+        <div class="exhibit-year">2026 (Upcoming)</div>
+        <div class="exhibit-title">Histories in Thread: Honoring Heirlooms in Contemporary Quilting</div>
+        <div class="exhibit-venue">Orange County Regional History Center, Orlando, FL</div>
+      </div>
+      <div class="exhibit-card reveal reveal-delay-2">
+        <div class="exhibit-year">2023</div>
+        <div class="exhibit-title">Intertwined: Labor and Technology in Contemporary Textile Art</div>
+        <div class="exhibit-venue">Aug 31 – Dec 16 · Museum of Fine Arts, Florida State University</div>
+      </div>
+      <div class="exhibit-card reveal reveal-delay-3">
+        <div class="exhibit-year">2023</div>
+        <div class="exhibit-title">Chakaia Booker: Surface Pressure</div>
+        <div class="exhibit-venue">Jul 16 – Oct 29 · Sarasota Art Museum, Ringling College</div>
+      </div>
+      <div class="exhibit-card reveal">
+        <div class="exhibit-year">2020</div>
+        <div class="exhibit-title">Ubuhle Women: Beadwork and the Art of Independence</div>
+        <div class="exhibit-venue">Virtual Beader App + Click360 Tour · Ruth Funk Center, Florida Tech</div>
+      </div>
+      <div class="exhibit-card reveal">
+        <div class="exhibit-year">2019</div>
+        <div class="exhibit-title">Designed to Mobilize: Propaganda Kimono 1920–1945</div>
+        <div class="exhibit-venue">Jan 26 – May 4 · Ruth Funk Center, Florida Tech</div>
+      </div>
+      <div class="exhibit-card reveal">
+        <div class="exhibit-year">2019</div>
+        <div class="exhibit-title">Not Quite Sew: Maggy Rozycki Hiltner</div>
+        <div class="exhibit-venue">Ruth Funk Center, Florida Institute of Technology</div>
+      </div>
+      <div class="exhibit-card reveal">
+        <div class="exhibit-year">2017</div>
+        <div class="exhibit-title">Flora and Fiber</div>
+        <div class="exhibit-venue">May 20 – Aug 26 · Ruth Funk Center, Florida Tech</div>
+      </div>
+      <div class="exhibit-card reveal">
+        <div class="exhibit-year">2016</div>
+        <div class="exhibit-title">Reimagined: Innovations in Fiber with Alex Trimino and Carrie Sieh</div>
+        <div class="exhibit-venue">Ruth Funk Center, Florida Institute of Technology</div>
+      </div>
+      <div class="exhibit-card reveal">
+        <div class="exhibit-year">2015</div>
+        <div class="exhibit-title">Light and Shadow: Contemporary Fiber Art by Hye Shin</div>
+        <div class="exhibit-venue">Ruth Funk Center, Florida Institute of Technology</div>
+      </div>
+      <div class="exhibit-card reveal">
+        <div class="exhibit-year">2014</div>
+        <div class="exhibit-title">Embellished: A Celebration of Wearable Art</div>
+        <div class="exhibit-venue">Ruth Funk Center, Florida Institute of Technology</div>
+      </div>
+      <div class="exhibit-card reveal">
+        <div class="exhibit-year">2014</div>
+        <div class="exhibit-title">Florida in Fabric II: Wish You Were Here!</div>
+        <div class="exhibit-venue">Ruth Funk Center, Florida Institute of Technology</div>
+      </div>
+      <div class="exhibit-card reveal">
+        <div class="exhibit-year">2014</div>
+        <div class="exhibit-title">Tying the Knot: Global Wedding Costume and Ritual</div>
+        <div class="exhibit-venue">Ruth Funk Center, Florida Institute of Technology</div>
+      </div>
+      <div class="exhibit-card reveal">
+        <div class="exhibit-year">2013</div>
+        <div class="exhibit-title">Textiles &amp; Culture: Highlights from the Permanent Collection</div>
+        <div class="exhibit-venue">Ruth Funk Center, Florida Institute of Technology</div>
+      </div>
+      <div class="exhibit-card reveal">
+        <div class="exhibit-year">2012</div>
+        <div class="exhibit-title">Battle Worn: Masculine Ideals and Military Identity in Modern Japanese Textiles</div>
+        <div class="exhibit-venue">Ruth Funk Center, Florida Institute of Technology</div>
+      </div>
+      <div class="exhibit-card reveal">
+        <div class="exhibit-year">2012</div>
+        <div class="exhibit-title">Florida in Fabric: Wish You Were Here!</div>
+        <div class="exhibit-venue">Ruth Funk Center, Florida Institute of Technology</div>
+      </div>
+      <div class="exhibit-card reveal">
+        <div class="exhibit-year">2012</div>
+        <div class="exhibit-title">Traditional Textiles of India</div>
+        <div class="exhibit-venue">Ruth Funk Center, Florida Institute of Technology</div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ── HONORS ─────────────────────────────────────────────────── -->
+<section id="honors" class="alt-bg">
+  <div class="section-inner">
+    <div class="section-header reveal">
+      <span class="section-number">06</span>
+      <h2 class="section-title">Honors, Awards &amp; Recognition</h2>
+      <div class="section-line"></div>
+    </div>
+
+    <div class="awards-masonry">
+      <div class="award-item reveal reveal-delay-1">
+        <div class="award-year">2021 – Present</div>
+        <div class="award-name">McKnight Doctoral Fellowship</div>
+        <div class="award-org">Florida Education Fund, Tampa, FL</div>
+      </div>
+      <div class="award-item reveal reveal-delay-2">
+        <div class="award-year">2024</div>
+        <div class="award-name">Inductee, Order of Pegasus</div>
+        <div class="award-org">Office of the President · University of Central Florida</div>
+      </div>
+      <div class="award-item reveal reveal-delay-3">
+        <div class="award-year">2024</div>
+        <div class="award-name">Most Promising New Textbook Award</div>
+        <div class="award-org">Textbook &amp; Academic Authors Association — for <em>This is America</em></div>
+      </div>
+      <div class="award-item reveal">
+        <div class="award-year">2023</div>
+        <div class="award-name">Equity, Diversity, and Inclusion (EDI) Award</div>
+        <div class="award-org">Southeastern College Art Conference (SECAC), Richmond, VA</div>
+      </div>
+      <div class="award-item reveal">
+        <div class="award-year">2026</div>
+        <div class="award-name">Texts and Technology Conference Travel Award</div>
+        <div class="award-org">University of Central Florida, Orlando, FL</div>
+      </div>
+      <div class="award-item reveal">
+        <div class="award-year">2025</div>
+        <div class="award-name">College of Graduate Studies Presentation Fellowship</div>
+        <div class="award-org">University of Central Florida</div>
+      </div>
+      <div class="award-item reveal">
+        <div class="award-year">2024</div>
+        <div class="award-name">College of Graduate Studies Presentation Fellowship</div>
+        <div class="award-org">University of Central Florida</div>
+      </div>
+      <div class="award-item reveal">
+        <div class="award-year">2023</div>
+        <div class="award-name">College of Graduate Studies Presentation Fellowship</div>
+        <div class="award-org">University of Central Florida</div>
+      </div>
+      <div class="award-item reveal">
+        <div class="award-year">2022</div>
+        <div class="award-name">Outstanding Arts and Humanities Presentation</div>
+        <div class="award-org">Statewide Graduate Research Symposium, Florida Conference of Graduate Schools</div>
+      </div>
+      <div class="award-item reveal">
+        <div class="award-year">2022</div>
+        <div class="award-name">Judges' Choice Award</div>
+        <div class="award-org">Student Scholar Symposium · University of Central Florida</div>
+      </div>
+      <div class="award-item reveal">
+        <div class="award-year">2021</div>
+        <div class="award-name">Graduate Dean's Fellowship</div>
+        <div class="award-org">University of Central Florida</div>
+      </div>
+      <div class="award-item reveal">
+        <div class="award-year">2021</div>
+        <div class="award-name">Graduate Summer Mentoring Fellowship</div>
+        <div class="award-org">University of Central Florida</div>
+      </div>
+      <div class="award-item reveal">
+        <div class="award-year">2019</div>
+        <div class="award-name">Silver Award — Excellence in Exhibitions</div>
+        <div class="award-org">Southeastern Museums Conference (SEMC) — for <em>Designed to Mobilize</em></div>
+      </div>
+      <div class="award-item reveal">
+        <div class="award-year">2018</div>
+        <div class="award-name">Scholarship Recipient, NextGen Program for Museum Leaders</div>
+        <div class="award-org">Museum Leadership Institute, Claremont Graduate University</div>
+      </div>
+      <div class="award-item reveal">
+        <div class="award-year">2015</div>
+        <div class="award-name">Annual Meeting Fellowship</div>
+        <div class="award-org">American Alliance of Museums, Atlanta, GA</div>
+      </div>
+      <div class="award-item reveal">
+        <div class="award-year">2005 – 2007</div>
+        <div class="award-name">Leslie N. Wilson Graduate Assistantship</div>
+        <div class="award-org">Florida State University</div>
+      </div>
+      <div class="award-item reveal">
+        <div class="award-year">2005</div>
+        <div class="award-name">Samuel P. Harn Outstanding Student in Art History Award</div>
+        <div class="award-org">University of Florida</div>
+      </div>
+      <div class="award-item reveal">
+        <div class="award-year">2005</div>
+        <div class="award-name">College of Fine Arts Outstanding Student Award</div>
+        <div class="award-org">University of Florida</div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ── CONFERENCES ────────────────────────────────────────────── -->
+<section id="conferences">
+  <div class="section-inner">
+    <div class="section-header reveal">
+      <span class="section-number">07</span>
+      <h2 class="section-title">Conferences &amp; Lectures</h2>
+      <div class="section-line"></div>
+    </div>
+
+    <div class="conf-tabs reveal">
+      <button class="conf-tab active" onclick="switchTab('organized')">Organized</button>
+      <button class="conf-tab" onclick="switchTab('chaired')">Sessions Chaired</button>
+      <button class="conf-tab" onclick="switchTab('presentations')">Presentations</button>
+      <button class="conf-tab" onclick="switchTab('public')">Public Lectures</button>
+    </div>
+
+    <!-- Organized -->
+    <div class="conf-panel active" id="tab-organized">
+      <div class="pub-list">
+        <div class="pub-item reveal"><div class="pub-year">2026 (Upcoming)</div><div class="pub-citation"><em>Creativity: Celebrating Innovation in Campus Museums and Galleries</em>, Association of Academic Museums and Galleries, University of Iowa, Iowa City, IA, June 9–12.</div></div>
+        <div class="pub-item reveal"><div class="pub-year">2026 (Upcoming)</div><div class="pub-citation">"(re)Membering at MOLAA," Museum of Latin American Art, Textile Society of America Spring Colloquium, Long Beach, CA, April 16.</div></div>
+        <div class="pub-item reveal"><div class="pub-year">2026</div><div class="pub-citation"><em>Now and Next: AAMG Student Summit 2026</em>, Association of Academic Museum and Galleries, Virtual, February 13.</div></div>
+        <div class="pub-item reveal"><div class="pub-year">2025</div><div class="pub-citation"><em>Belonging: Storytelling Across Campus and Community</em>, AAMG, University of New Mexico Art Museum, Albuquerque, NM, June 24–27.</div></div>
+        <div class="pub-item reveal"><div class="pub-year">2024</div><div class="pub-citation"><em>Shifts and Strands: Rethinking the Possibilities and Potentials of Textiles</em>, Textile Society of America Symposium, November 12–17.</div></div>
+        <div class="pub-item reveal"><div class="pub-year">2023</div><div class="pub-citation"><em>(re)Imagining Futures: Shifting Methodologies</em>, Textile Society of America Symposium, October 30.</div></div>
+      </div>
+    </div>
+
+    <!-- Chaired -->
+    <div class="conf-panel" id="tab-chaired">
+      <div class="pub-list">
+        <div class="pub-item reveal"><div class="pub-year">2026</div><div class="pub-citation">"Kandy Lopez: Presence as Power," <em>Fiber &amp; Form: Tactile Acts of Threading Spaces Symposium</em>, Surface Design Association.</div></div>
+        <div class="pub-item reveal"><div class="pub-year">2025</div><div class="pub-citation">"Happy Anniversary! Strategies for Amplifying Institutional Histories," AAMG Annual Conference, University of New Mexico.</div></div>
+        <div class="pub-item reveal"><div class="pub-year">2025</div><div class="pub-citation">"Verónica A. Pèrez: Intertwining Identities," <em>All Hands: Crafting Connections Symposium</em>, Surface Design Association.</div></div>
+        <div class="pub-item reveal"><div class="pub-year">2024</div><div class="pub-citation">"Textile Conservation and Collection," <em>Shifts and Strands</em>, Textile Society of America.</div></div>
+        <div class="pub-item reveal"><div class="pub-year">2024</div><div class="pub-citation">"Academic Museums: Life Under the Big Umbrella (Series Session)," SEMC, Baton Rouge, LA.</div></div>
+        <div class="pub-item reveal"><div class="pub-year">2022</div><div class="pub-citation">"Fiber Art and Museum Practice: A Conversation," Studio Art Quilt Associates Virtual Conference.</div></div>
+        <div class="pub-item reveal"><div class="pub-year">2019</div><div class="pub-citation">"Looking Back to Move Forward: Commemorating Controversy in the Campus Museum," AAMG National Conference, Minneapolis, MN.</div></div>
+        <div class="pub-item reveal"><div class="pub-year">2017</div><div class="pub-citation">"Don't Forget Your Umbrella! Success within a Parent Institution," AAMG National Conference, Eugene, OR.</div></div>
+      </div>
+    </div>
+
+    <!-- Presentations -->
+    <div class="conf-panel" id="tab-presentations">
+      <div class="pub-list">
+        <div class="pub-item reveal"><div class="pub-year">2026</div><div class="pub-citation">"Swagga Like Us: Clothing, Culture, and Rhetoric in the Fiber Portraits of Kandy G. Lopez," <em>Painted Garments Symposium</em>, Camberwell College of Arts, University of the Arts, London, UK.</div></div>
+        <div class="pub-item reveal"><div class="pub-year">2025</div><div class="pub-citation">"Fraught Liabilities, Visible Assets, or Hidden Gems? Evaluating and Visualizing Academic Museums and Galleries in Florida," Southeastern College Art Conference, Cincinnati, OH.</div></div>
+        <div class="pub-item reveal"><div class="pub-year">2025</div><div class="pub-citation">Watson, Keri and Keidra Daniels Navaroli. "Surveying New Approaches: Strategies for Rethinking the American Art Survey," Association of Historians of American Art, Virtual Workshop.</div></div>
+        <div class="pub-item reveal"><div class="pub-year">2024</div><div class="pub-citation">"Celebrating Ten Years of <em>Panorama</em>: Journal of the AHAA" — Keynote Address, Eighth Biennial Symposium, Birmingham Museum of Art, Birmingham, AL.</div></div>
+        <div class="pub-item reveal"><div class="pub-year">2023</div><div class="pub-citation">"Waters of the Abyss: The Intangible Landscapes of Fabiola Jean-Louis," SECAC, Richmond, VA. <span style="color:var(--gold-lt)">[EDI Award]</span></div></div>
+        <div class="pub-item reveal"><div class="pub-year">2023</div><div class="pub-citation">"Encountering, Uncovering, Dismantling, and Rebuilding Truth in Curatorial and Archival Research," CurCom Roundtable, SEMC, Louisville, KY.</div></div>
+        <div class="pub-item reveal"><div class="pub-year">2023</div><div class="pub-citation">"Autopsy: How Museums Die," Florida Association of Museums Conference, University of South Florida, Tampa, FL.</div></div>
+        <div class="pub-item reveal"><div class="pub-year">2023</div><div class="pub-citation">"REALity of Artificial Intelligence," UCF Center for Ethics, Dr. Phillips Center for the Performing Arts, Orlando, FL.</div></div>
+        <div class="pub-item reveal"><div class="pub-year">2022</div><div class="pub-citation">"Mending the Narrative: Re-viewing Textiles in American Art," Studio Art Quilt Associates Virtual Conference.</div></div>
+        <div class="pub-item reveal"><div class="pub-year">2022</div><div class="pub-citation">"Post(?)-Pandemic Use of Technology in the Museum," Textile and Costume Curators Forum, George Washington University Museum and The Textile Museum.</div></div>
+        <div class="pub-item reveal"><div class="pub-year">2022</div><div class="pub-citation">"Resisting in and through the Material," DIY Methods 2022, Low Carbon Research Methods Group, Trent University.</div></div>
+        <div class="pub-item reveal"><div class="pub-year">2021</div><div class="pub-citation">Watson, Keri and Keidra Daniels Navaroli. "Re-viewing American Impressionism: Images of the Changing Landscape," Lowe Connects Webinar, Lowe Art Museum, University of Miami.</div></div>
+        <div class="pub-item reveal"><div class="pub-year">2020</div><div class="pub-citation">"Dimensions of Curation Competing Values Model: Tool for Crisis Curating," American Alliance of Museums National Conference.</div></div>
+        <div class="pub-item reveal"><div class="pub-year">2019</div><div class="pub-citation">"Blue is the Warmest Color: Indigo and the Permanent Collection of the Ruth Funk Center for Textile Arts," Deeper than Indigo Southeast Textile Symposium, Flagler College, St. Augustine, FL.</div></div>
+      </div>
+    </div>
+
+    <!-- Public -->
+    <div class="conf-panel" id="tab-public">
+      <div class="pub-list">
+        <div class="pub-item reveal"><div class="pub-year">2026</div><div class="pub-citation">Moderator, "Quilts That Speak: What History Has Buried," Textile Talk Webinar Series, Studio Art Quilt Associates and Surface Design Association.</div></div>
+        <div class="pub-item reveal"><div class="pub-year">2025</div><div class="pub-citation">"The Curatorial Lens: Conversations in the Gallery," for <em>Pool Party: The Pool in American Art</em>, Mennello Museum of American Art, Orlando, FL.</div></div>
+        <div class="pub-item reveal"><div class="pub-year">2025</div><div class="pub-citation">Panelist, Women in the Arts Expo, Orlando Public Library, Orlando, FL.</div></div>
+        <div class="pub-item reveal"><div class="pub-year">2024</div><div class="pub-citation">"On Suchitra Mattai: Bodies and Souls," Sunday Session Series, Tampa Museum of Art, Tampa, FL.</div></div>
+        <div class="pub-item reveal"><div class="pub-year">2024</div><div class="pub-citation">"Bridging the Gap: Art, Technology, and Museum Practice," Art Sandwiched In Series, Orlando Museum of Art, Orlando, FL.</div></div>
+        <div class="pub-item reveal"><div class="pub-year">2023</div><div class="pub-citation">Artist Talk with Yvonne Osei, Museum of Fine Arts, Florida State University, Tallahassee, FL.</div></div>
+        <div class="pub-item reveal"><div class="pub-year">2023</div><div class="pub-citation">"Chakaia Booker: Surface Pressure," Friends of Contemporary Art, Vero Beach Art Museum, Vero Beach, FL.</div></div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ── PROFESSIONAL ACCOMPLISHMENTS ──────────────────────────── -->
+<section id="accomplishments" class="alt-bg">
+  <div class="section-inner">
+    <div class="section-header reveal">
+      <span class="section-number">08</span>
+      <h2 class="section-title">Professional Accomplishments</h2>
+      <div class="section-line"></div>
+    </div>
+
+    <div class="accom-grid">
+      <div class="accom-card reveal reveal-delay-1">
+        <div class="accom-role">As Assistant Director &amp; Curator, Florida Tech</div>
+        <div class="accom-bullets">
+          <div class="accom-bullet">Formed interdisciplinary partnerships; developed virtual tours, online exhibitions, and digital resources through the university's Digital Scholarship Lab.</div>
+          <div class="accom-bullet">Wrote and managed publications — exhibition summaries, catalog essays, didactic labels, and digital texts; recognized by SEMC, AAM, and others.</div>
+          <div class="accom-bullet">Curated in-house exhibitions; forged key partnerships with Ringling Museum, Morikami Museum, the Wolfsonian-FIU, and the Japanese Consulate.</div>
+          <div class="accom-bullet">Led mission/vision/values design-thinking sessions; authored the Center's core institutional values.</div>
+          <div class="accom-bullet">Secured competitive grant funding from E. Rhodes &amp; Leona B. Carpenter Foundation and the National Endowment for the Humanities.</div>
+        </div>
+      </div>
+      <div class="accom-card reveal reveal-delay-2">
+        <div class="accom-role">As Assistant Director, Florida Tech</div>
+        <div class="accom-bullets">
+          <div class="accom-bullet">Oversaw daily operations: exhibitions, Friends of Textiles Lecture Series, Uncommon Threads Symposium, student events, and children/family workshops.</div>
+          <div class="accom-bullet">Built and maintained relationships with patrons, collectors, donors, and artists; fostered partnerships with the Asian Cultural Association of Central Florida, Norton Museum of Art, and Brevard County's Club Esteem.</div>
+        </div>
+      </div>
+      <div class="accom-card reveal reveal-delay-3">
+        <div class="accom-role">Corporate &amp; Foundation Relations, Orlando Museum of Art</div>
+        <div class="accom-bullets">
+          <div class="accom-bullet">Responsible for all grant proposal writing and reporting, resulting in <strong style="color:var(--gold-lt)">$730,000</strong> in increased revenue for the museum.</div>
+          <div class="accom-bullet">Managed corporate sponsorship, created sponsorship proposals, and implemented donor acknowledgment events.</div>
+        </div>
+      </div>
+      <div class="accom-card reveal">
+        <div class="accom-role">As Special Projects Assistant, Florida Tech</div>
+        <div class="accom-bullets">
+          <div class="accom-bullet">Assisted in developing a comprehensive annual-giving program; managed Friends of Textiles membership database, achieving a <strong style="color:var(--gold-lt)">50% increase</strong> in membership.</div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ── CONTACT ─────────────────────────────────────────────────── -->
+<div class="kente-strip tall"></div>
+<section id="contact">
+  <div class="diamond-row reveal"><div class="diamond-line" style="max-width:200px"></div><div class="diamond"></div><div class="diamond lg"></div><div class="diamond"></div><div class="diamond-line" style="max-width:200px"></div></div>
+  <h2 class="contact-name reveal">Keidra <span style="color:var(--gold)">Daniels</span> Navaroli</h2>
+  <p class="contact-tagline reveal">Art Historian · Curator · Scholar · Educator</p>
+  <div class="contact-links reveal">
+    <a href="mailto:dkeidra@gmail.com">
+      <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M4 4h16c1.1 0 2 .9 2 2v12c0 1.1-.9 2-2 2H4c-1.1 0-2-.9-2-2V6c0-1.1.9-2 2-2z"/><polyline points="22,6 12,13 2,6"/></svg>
+      dkeidra@gmail.com
+    </a>
+    <a href="mailto:keidra.navaroli@ucf.edu">
+      <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M4 4h16c1.1 0 2 .9 2 2v12c0 1.1-.9 2-2 2H4c-1.1 0-2-.9-2-2V6c0-1.1.9-2 2-2z"/><polyline points="22,6 12,13 2,6"/></svg>
+      keidra.navaroli@ucf.edu
+    </a>
+    <a href="https://kdnavaroli.com" target="_blank" rel="noopener">
+      <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="12" cy="12" r="10"/><line x1="2" y1="12" x2="22" y2="12"/><path d="M12 2a15.3 15.3 0 0 1 4 10 15.3 15.3 0 0 1-4 10 15.3 15.3 0 0 1-4-10 15.3 15.3 0 0 1 4-10z"/></svg>
+      kdnavaroli.com
+    </a>
+  </div>
+  <p class="contact-copy reveal">© 2026 Keidra Daniels Navaroli · All rights reserved</p>
+</section>
+<div class="kente-strip tall"></div>
+
+<script>
+  /* ── Scroll progress bar ──────────────────────────────── */
+  const bar = document.getElementById('progress-bar');
+  window.addEventListener('scroll', () => {
+    const pct = (window.scrollY / (document.body.scrollHeight - window.innerHeight)) * 100;
+    bar.style.width = pct + '%';
+  }, { passive: true });
+
+  /* ── Scroll reveal ────────────────────────────────────── */
+  const reveals = document.querySelectorAll('.reveal');
+  const observer = new IntersectionObserver((entries) => {
+    entries.forEach(e => { if (e.isIntersecting) { e.target.classList.add('visible'); observer.unobserve(e.target); } });
+  }, { threshold: 0.1, rootMargin: '0px 0px -60px 0px' });
+  reveals.forEach(r => observer.observe(r));
+
+  /* ── Conference tabs ──────────────────────────────────── */
+  function switchTab(id) {
+    document.querySelectorAll('.conf-tab').forEach(t => t.classList.remove('active'));
+    document.querySelectorAll('.conf-panel').forEach(p => p.classList.remove('active'));
+    event.target.classList.add('active');
+    const panel = document.getElementById('tab-' + id);
+    panel.classList.add('active');
+    panel.querySelectorAll('.reveal').forEach(r => r.classList.add('visible'));
+  }
+
+  /* ── Kente animation ──────────────────────────────────── */
+  const strips = document.querySelectorAll('.kente-strip');
+  let offset = 0;
+  function animateKente() {
+    offset = (offset + 0.3) % 78;
+    strips.forEach(s => s.style.backgroundPositionX = offset + 'px');
+    requestAnimationFrame(animateKente);
+  }
+  animateKente();
+</script>
+</body>
+</html>
